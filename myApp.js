@@ -23,7 +23,15 @@ app.get("/json", (req, res) => {
                 {"message": "Hello json"}
             )
         }
+});
 
+app.get("/now", function(req,res,next){
+    req.time = new Date()
+    next()
+}, function (req,res) {
+    res.json({
+        time: req.time
+    })
 });
 
 
